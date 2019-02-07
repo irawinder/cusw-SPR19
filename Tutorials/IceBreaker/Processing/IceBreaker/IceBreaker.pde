@@ -107,9 +107,9 @@ void setup() {
 void draw() {
   background(0);
   
-  for (Connection c: cohort) {
-    c.draw();
-  }
+  //for (Connection c: cohort) {
+  //  c.draw();
+  //}
   
   for (Connection c: frands) {
     c.draw();
