@@ -1,3 +1,10 @@
+/*
+Computational Urban Science Workshop
+Ira Winder and Nina Lutz 
+
+Script: Nina Lutz
+Simple heatmap class and script generating a random one
+*/
 Heatmap heatmap;
 void setup(){
   size(800, 800);
