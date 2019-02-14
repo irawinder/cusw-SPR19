@@ -6,8 +6,7 @@ class Person {
   String year;
   PVector screenLocation;
   
-  // true/false statement to track whether person is activated by mouse clicks
-  boolean hover;  // Is person being hovered over by mouse?
+  // True-False statement to track whether person is activated by mouse clicks
   boolean locked; // is person selected by mouse?
   
   Person(String _name, String _year) {
@@ -64,17 +63,10 @@ class Person {
   
   // Is person selected by mouse? 
   // Run this in mousePressed()
-  boolean check() {
+  boolean checkSelection() {
     
     // Checks if hovering over person
     if ( hoverEvent() ) {
-      hover = true;
-    } else {
-      hover = false;
-    }
-    
-    // "Locks on" to person if so
-    if (mousePressed && hover) {
       locked = true;
     } else {
       locked = false;
@@ -83,9 +75,9 @@ class Person {
     return locked;
   }
   
-  // Update location of person if "locked on" with mouse
   void update() {
     
+    // Update location of person if "locked on" with mouse
     if (locked) {
       screenLocation = new PVector(mouseX, mouseY);
     }

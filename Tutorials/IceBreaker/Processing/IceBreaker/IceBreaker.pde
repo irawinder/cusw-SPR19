@@ -141,7 +141,7 @@ void draw() {
 void mousePressed() {
   // Checks to see if you clicked a person
   for (Person p: cusw) {
-    if ( p.check() ) { 
+    if ( p.checkSelection() ) { 
       break;
     }
   }
