@@ -30,7 +30,7 @@ void setup() {
   p[18] = new Person("Titus Venverloo", "3");
   p[19] = new Person("Melanie Droogleever Fortuyn", "3");
   p[20] = new Person("Ajara Ceesay", "SPURS");
-  p[21] = new Person("Sharlene Chiu", "G");
+  p[21] = new Person("Sharlene Chiu", "4");
   p[22] = new Person("Helena Rong", "G");
   p[23] = new Person("Lara Shonkwiler", "2");
   p[24] = new Person("Nanako", "Panasonic");
