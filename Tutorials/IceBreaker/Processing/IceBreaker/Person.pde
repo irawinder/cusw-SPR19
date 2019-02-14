@@ -1,25 +1,19 @@
+// A class Representing basic properties of a Person
+
 class Person {
   
   String name;
   String year;
-  String course;
   PVector screenLocation;
   
-  boolean hover;
-  boolean locked;
+  // true/false statement to track whether person is activated by mouse clicks
+  boolean hover;  // Is person being hovered over by mouse?
+  boolean locked; // is person selected by mouse?
   
   Person(String _name, String _year) {
     name = _name;
     year = _year;
     screenLocation = new PVector(width/2, height/2);
-    course = "";
-  }
-  
-  Person(String _name, String _year, String _course) {
-    name = _name;
-    year = _year;
-    screenLocation = new PVector(width/2, height/2);
-    course = _course;
   }
   
   // Arrange my person some angle theta along a circle
@@ -29,6 +23,7 @@ class Person {
     screenLocation.y = height/2 + radius*cos(theta);
   }
   
+  // Place my person randomly on the screen
   void randomLocation() {
     float x = random(0.8*width);
     float y = random(height);
@@ -40,24 +35,25 @@ class Person {
     
     // What color is my person?
     if (year.equals("1")) {
-      fill(#FF0000);
+      fill(#FF0000); // Red
     } else if (year.equals("2")) {
-      fill(#00FF00);
+      fill(#00FF00); // Green
     } else if (year.equals("3")) {
-      fill(#0000FF);
+      fill(#0000FF); // Blue
     } else if (year.equals("4")) {
-      fill(#FFFF00);
+      fill(#FFFF00); // Yellow
     } else if (year.equals("G")) {
-      fill(#FF00FF);
+      fill(#FF00FF); // Magenta
     } else {
-      fill(#00FFFF);
+      fill(#00FFFF); // Cyan
     }
     
-    // Draws a Circle Representing my Person
+    // Draws a solid colored Circle Representing my Person
     ellipse(screenLocation.x, screenLocation.y, 30, 30);
-    noFill();
-    stroke(255);
-    strokeWeight(5);
+    
+    // Draws a white outline of a circle on top of my solid color circle
+    noFill(); stroke(255); // Solid White; no fill
+    strokeWeight(5); // 5 pixels stroke width
     ellipse(screenLocation.x, screenLocation.y, 30, 30);
     
     // Draw Text Information about my person
@@ -66,13 +62,18 @@ class Person {
     
   }
   
+  // Is person selected by mouse? 
+  // Run this in mousePressed()
   boolean check() {
+    
+    // Checks if hovering over person
     if ( hoverEvent() ) {
       hover = true;
     } else {
       hover = false;
     }
     
+    // "Locks on" to person if so
     if (mousePressed && hover) {
       locked = true;
     } else {
@@ -82,19 +83,8 @@ class Person {
     return locked;
   }
   
+  // Update location of person if "locked on" with mouse
   void update() {
-    
-    //if ( hoverEvent() ) {
-    //  hover = true;
-    //} else {
-    //  hover = false;
-    //}
-    
-    //if (mousePressed && hover) {
-    //  locked = true;
-    //} else {
-    //  locked = false;
-    //}
     
     if (locked) {
       screenLocation = new PVector(mouseX, mouseY);
@@ -102,6 +92,7 @@ class Person {
     
   }
   
+  // Checks to see if mouse is hovering over person
   boolean hoverEvent() {
     if ( abs(mouseX - screenLocation.x) < 15 && abs(mouseY - screenLocation.y) < 15 ) {
       return true;

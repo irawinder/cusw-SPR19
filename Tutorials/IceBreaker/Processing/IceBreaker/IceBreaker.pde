@@ -1,13 +1,25 @@
+/* IceBreaker Network Visualization
+ * 11.S195 Computational Urban Science Workshop
+ * jiw@mit.edu
+ *
+ * This script allows you define and manipulate a graph representing students in a class.
+ */
+
+// List of people in Computational Urban Science Workshop (CUSW)
 ArrayList<Person> cusw;
+
+// Connection between Frands (i.e. acquaintences)
 ArrayList<Connection> frands;
+
+// Connections between students in the same year or cohort
 ArrayList<Connection> cohort;
-ArrayList<Connection> course;
 
 void setup() {
   
+  // Set Screen Size to 800 x 700 pixels
   size(800, 700);
   
-  // Initialize People from our class
+  // Initialize array of People from our class
   Person[] p = new Person[28];
   p[0] = new Person("Zhang, Jenny", "1");
   p[1] = new Person("Levenson, Emily", "1");
@@ -38,12 +50,13 @@ void setup() {
   p[26] = new Person("Rosanne", "4");
   p[27] = new Person("Eric", "4");
   
+  // Add all of these people to an array list of People, cusw
   cusw = new ArrayList<Person>();
   for (int i=0; i<p.length; i++) {
     cusw.add(p[i]);
   }
   
-    // Initialize Other Relationships
+  // Initialize Frands and Acquaintances
   frands = new ArrayList<Connection>();
   frands.add(new Connection(p[15], p[13], "frands"));
   frands.add(new Connection(p[15], p[12], "frands"));
@@ -77,20 +90,19 @@ void setup() {
   frands.add(new Connection(p[22], p[14], "frands"));
   frands.add(new Connection(p[22], p[11], "frands"));
   
-  
   // Initialize Cohort Relationships
   cohort = new ArrayList<Connection>();
   for (Person peep1: cusw) {
     for (Person peep2: cusw) {
-      if (!peep1.name.equals(peep2.name)) {
-        if (peep1.year.equals(peep2.year)) {
+      if (!peep1.name.equals(peep2.name)) { // people are not connected to themselves
+        if (peep1.year.equals(peep2.year)) { // two people are connected when same 'year'
           cohort.add(new Connection(peep1, peep2, "cohort"));
         }
       }
     }
   }
   
-  // Arrange all of the people in a cute little circle
+  // Arrange all of the people in a cute little circle on the canvas
   int num_people = cusw.size();
   for (int i=0; i<num_people; i++) {
     Person peep = cusw.get(i);
@@ -107,14 +119,17 @@ void setup() {
 void draw() {
   background(0);
   
+  // Draw connections by year
   //for (Connection c: cohort) {
   //  c.draw();
   //}
   
+  // Draw Connections by Acquaintenceship
   for (Connection c: frands) {
     c.draw();
   }
   
+  // Draw Nodes Representing People
   for (Person p: cusw) {
     p.update();
     p.draw();
@@ -122,20 +137,20 @@ void draw() {
   
 }
 
+// This function runs whenever a mouse button is pressed down
 void mousePressed() {
+  // Checks to see if you clicked a person
   for (Person p: cusw) {
-    if ( p.check() ) {
+    if ( p.check() ) { 
       break;
     }
   }
 }
 
+// This function runs whenever a mouse button is released
 void mouseReleased() {
+  // Unselect all People
   for (Person p: cusw) {
     p.locked = false;
   }
-}
-
-void initConnections() {
-  
 }
