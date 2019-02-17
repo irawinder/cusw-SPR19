@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "addresses",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 5254669783, "office": "it", "addr:housenumber": "84", "name": "Student Information Processing Board", "amenity": null, "website": "https:\/\/sipb.mit.edu\/", "addr:unit": "W20-557", "addr:city": "Cambridge", "addr:postcode": "02139", "addr:state": "MA", "phone": "+1-607-253-7788", "email": "sipb@mit.edu", "addr:street": "Massachusetts Avenue", "cuisine": null, "takeaway": null, "smoking": null }, "geometry": { "type": "Point", "coordinates": [ -71.0946271, 42.3592136 ] } },
+{ "type": "Feature", "properties": { "osm_id": 3895979206, "office": null, "addr:housenumber": "88", "name": "Shwarma Shack", "amenity": "fast_food", "website": null, "addr:unit": null, "addr:city": "Cambridge", "addr:postcode": "02139", "addr:state": "MA", "phone": null, "email": null, "addr:street": "Massachusetts Avenue", "cuisine": "kebab", "takeaway": "yes", "smoking": "no" }, "geometry": { "type": "Point", "coordinates": [ -71.0946856, 42.3592555 ] } }
+]
+}
