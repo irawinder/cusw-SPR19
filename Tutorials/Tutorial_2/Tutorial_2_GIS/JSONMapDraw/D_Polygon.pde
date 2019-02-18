@@ -4,7 +4,6 @@ class Polygon{
   //Shape, coordinates, and color variables
   PShape p;
   ArrayList<PVector>coordinates;
-  color fill;
 
   //Empty constructor
   Polygon(){
@@ -14,7 +13,6 @@ class Polygon{
   //Constructor with coordinates
   Polygon(ArrayList<PVector> coords){
     coordinates = coords;
-    fill = color(0, 255, 255);
     makeShape();
   }
   
@@ -22,8 +20,9 @@ class Polygon{
   void makeShape(){
     p = createShape();
     p.beginShape();
-    p.fill(fill);
-    p.noStroke();
+    p.fill(polygon_fill);
+    p.strokeWeight(.5);
+    p.stroke(255);
     for(int i = 0; i<coordinates.size(); i++){
         PVector screenLocation = map.getScreenLocation(coordinates.get(i));
         p.vertex(screenLocation.x, screenLocation.y);

@@ -27,6 +27,8 @@ void setup(){
 void draw(){
   //background image from OSM 
   image(background, 0, 0);
+  fill(0, 120);
+  rect(0, 0, width, height);
   
   //Draw all the ways (roads, sidewalks, etc)
   for(int i = 0; i<ways.size(); i++){
@@ -43,5 +45,6 @@ void draw(){
     pois.get(i).draw();
   }
   
+  drawInfo();
   
 }

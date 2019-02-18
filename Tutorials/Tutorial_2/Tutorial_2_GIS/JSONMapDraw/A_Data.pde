@@ -29,13 +29,18 @@ void parseData(){
     String type = features.getJSONObject(i).getJSONObject("geometry").getString("type");
     JSONObject geometry = features.getJSONObject(i).getJSONObject("geometry");
     JSONObject properties =  features.getJSONObject(i).getJSONObject("properties");
-    
+    String amenity = properties.getJSONObject("tags").getString("amenity");
+    String dataAmenity = properties.getJSONObject("tags").getString("amenity");
+    if(dataAmenity != null) amenity = dataAmenity;
+    else amenity = "";
     //Make POIs if it's a point
     if(type.equals("Point")){
       //create new POI
       float lat = geometry.getJSONArray("coordinates").getFloat(1);
       float lon = geometry.getJSONArray("coordinates").getFloat(0);
       POI poi = new POI(lat, lon);
+      poi.type = amenity;
+      if(amenity.equals("atm")) poi.ATM = true;
       pois.add(poi);
     }
     
