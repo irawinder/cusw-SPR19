@@ -1,5 +1,4 @@
 ArrayList<Polygon> polygons;
-
 class Polygon{
   //Shape, coordinates, and color variables
   PShape p;
