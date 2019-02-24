@@ -19,8 +19,8 @@ void draw(){
     CensusPolygons.get(i).draw();
   }
   
-  county.draw();
+  //county.draw();
   
-  raster.draw();
+  //raster.draw();
   
 }

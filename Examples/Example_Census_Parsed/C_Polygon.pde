@@ -18,9 +18,20 @@ class Polygon{
   //Constructor with coordinates
   Polygon(ArrayList<PVector> coords){
     coordinates = coords;
-    fill = color(0, 255, 255);
+    //fill = color(0, 255, 255);
+    fill = color(score);
     makeShape();
   }
+  
+  
+    //Constructor with coordinates
+  Polygon(ArrayList<PVector> coords, float _score){
+    coordinates = coords;
+    score = _score;
+    fill = color(score);
+    makeShape();
+  }
+  
   
   Polygon(ArrayList<PVector> coords, color c){
     coordinates = coords;

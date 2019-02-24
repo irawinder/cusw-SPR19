@@ -18,7 +18,7 @@ void parseData(){
          float lon = float(CountyBoundary.getString(i, 1));
          coords.add(new PVector(lat, lon));
     }
-     county = new Polygon(coords, color(255, 0, 0, 100));
+     county = new Polygon(coords);
      
   int previd = 0;
   coords = new ArrayList<PVector>();
@@ -47,7 +47,6 @@ void parseData(){
   for(int i = 0; i<CensusPolygons.size(); i++){
     for(int j = 0; j<CensusData.getRowCount(); j++){
       //Household income = B19113
-      //Currently there appears to be a slight bug in some of the data because it is still cached from the shutdown, and is converting odds in QGIS 
       CensusPolygons.get(i).score = CensusData.getFloat(i, "B19113");
     }
   }
