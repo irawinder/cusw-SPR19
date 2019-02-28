@@ -17,4 +17,5 @@ void setup(){
 }
 
 void draw(){
+  image(heatmap.p, 0, 0);
 }

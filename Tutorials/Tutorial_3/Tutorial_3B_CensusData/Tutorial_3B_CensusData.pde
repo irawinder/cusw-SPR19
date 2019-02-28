@@ -14,9 +14,9 @@ void setup(){
 
 void draw(){
   background(0);
-  for(int i = 0; i<CensusPolygons.size(); i++){
-    CensusPolygons.get(i).draw();
-  }
-  //raster.draw();
+  //for(int i = 0; i<CensusPolygons.size(); i++){
+  //  CensusPolygons.get(i).draw();
+  //}
+  raster.draw();
   county.draw();
 }

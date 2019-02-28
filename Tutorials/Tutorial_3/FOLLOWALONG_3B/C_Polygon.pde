@@ -27,7 +27,7 @@ class Polygon{
   }
   
   void colorByScore(){
-    fill = color(score);
+    fill = color(score); 
   }
   
   
@@ -56,6 +56,18 @@ class Polygon{
   }
   
 boolean pointInPolygon(PVector pos) {
-  return false;
-}
+    int i, j;
+    boolean c=false;
+    int sides = coordinates.size();
+    for (i=0,j=sides-1;i<sides;j=i++) {
+      if (( ((coordinates.get(i).y <= pos.y) && (pos.y < coordinates.get(j).y)) 
+      || ((coordinates.get(j).y <= pos.y) && (pos.y < coordinates.get(i).y))) &&
+         (pos.x < (coordinates.get(j).x - coordinates.get(i).x) * 
+         (pos.y - coordinates.get(i).y) / (coordinates.get(j).y - coordinates.get(i).y) 
+         + coordinates.get(i).x)) {
+        c = !c;
+      }
+    }
+    return c;
+  }
 }

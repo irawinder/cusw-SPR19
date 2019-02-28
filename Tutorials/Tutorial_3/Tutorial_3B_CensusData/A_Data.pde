@@ -44,6 +44,7 @@ void parseData(){
   }
   
   //Add attribute you want to your polygon (you can add more attributes if you want and look at the Tiger page for more info) 
+  //Total household income
   for(int i = 0; i<CensusPolygons.size(); i++){
     CensusPolygons.get(i).score = CensusData.getFloat(i, "B19113"); //this is ONLY if the IDs are accurate
     CensusPolygons.get(i).colorByScore();
