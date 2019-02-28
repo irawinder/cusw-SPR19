@@ -11,6 +11,7 @@ void loadData(){
 }
 
 void parseData(){
+  
   //First parse county polygon
     ArrayList<PVector> coords = new ArrayList<PVector>();
     for(int i = 0; i<CountyBoundary.getRowCount(); i++){
@@ -18,8 +19,12 @@ void parseData(){
          float lon = float(CountyBoundary.getString(i, 1));
          coords.add(new PVector(lat, lon));
     }
-     county = new Polygon(coords, color(255, 0, 0, 100));
-     
+   county = new Polygon(coords);
+   county.outline = true;
+   county.makeShape();  
+
+   
+//Now we can parse the population polygons
   int previd = 0;
   coords = new ArrayList<PVector>();
   for(int i = 0; i<CensusBlocks.getRowCount(); i++){
@@ -45,12 +50,11 @@ void parseData(){
   
   //Add attribute you want to your polygon (you can add more attributes if you want and look at the Tiger page for more info) 
   for(int i = 0; i<CensusPolygons.size(); i++){
-    for(int j = 0; j<CensusData.getRowCount(); j++){
-      //Household income = B19113
-      //Currently there appears to be a slight bug in some of the data because it is still cached from the shutdown, and is converting odds in QGIS 
-      CensusPolygons.get(i).score = CensusData.getFloat(i, "B19113");
-    }
+    CensusPolygons.get(i).score = CensusData.getFloat(i, "B19113"); //this is ONLY if the IDs are accurate
+    CensusPolygons.get(i).colorByScore();
+    CensusPolygons.get(i).makeShape();
   }
+  
 
   //Test case for point in Polygon
   //println(county.pointInPolygon(new PVector(27.25, -80.85)));

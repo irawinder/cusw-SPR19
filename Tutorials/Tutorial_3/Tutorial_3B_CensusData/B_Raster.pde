@@ -51,15 +51,13 @@ class Raster{
     }
     
   }
-    
-  
   
   void draw(){
     for(int i = 0; i<numX; i++){
       for(int j = 0; j<numY; j++){
       stroke(0);
       //obviously you could change this to a score situation like the heatmap
-      fill(scores[i][j], 100);
+      fill(scores[i][j]);
       rect(i*(start.x + cellSize), j*(start.y + cellSize), cellSize, cellSize);
       ellipse(centers[i][j].x, centers[i][j].y, 1, 1);
       }

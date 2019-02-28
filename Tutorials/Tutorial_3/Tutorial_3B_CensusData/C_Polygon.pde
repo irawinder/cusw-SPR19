@@ -9,6 +9,7 @@ class Polygon{
   float pop;
   int id; 
   float score;
+  boolean outline; 
 
   //Empty constructor
   Polygon(){
@@ -18,14 +19,15 @@ class Polygon{
   //Constructor with coordinates
   Polygon(ArrayList<PVector> coords){
     coordinates = coords;
-    fill = color(0, 255, 255);
-    makeShape();
   }
   
-  Polygon(ArrayList<PVector> coords, color c){
+  Polygon(ArrayList<PVector> coords, color _c){
     coordinates = coords;
-    fill = c;
-    makeShape();
+    fill = _c;
+  }
+  
+  void colorByScore(){
+    fill = color(score);
   }
   
   
@@ -35,6 +37,12 @@ class Polygon{
     p.beginShape();
     p.fill(fill);
     p.stroke(0);
+    p.strokeWeight(.5);
+    if(outline){
+      p.noFill();
+      p.stroke(255, 200, 20);
+      p.strokeWeight(4);
+    }
     for(int i = 0; i<coordinates.size(); i++){
         PVector screenLocation = map.getScreenLocation(coordinates.get(i));
         p.vertex(screenLocation.x, screenLocation.y);

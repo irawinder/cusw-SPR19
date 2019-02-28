@@ -9,18 +9,14 @@ void setup(){
   map = new MercatorMap(width, height, 28, 26.5, -81.25, -80.5, 0);
   loadData();
   parseData();
-    raster = new Raster(20, 600, 600);
+  raster = new Raster(20, 600, 600);
 }
 
 void draw(){
   background(0);
-  
   for(int i = 0; i<CensusPolygons.size(); i++){
     CensusPolygons.get(i).draw();
   }
-  
+  //raster.draw();
   county.draw();
-  
-  raster.draw();
-  
 }
