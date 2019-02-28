@@ -1,7 +1,4 @@
-Table CountyBoundary;
-Table CensusData;
-Table CensusBlocks;
-
+Table CountyBoundary, CensusData,CensusBlocks;
 
 void loadData(){
   CountyBoundary = loadTable("data/FloridaNodes.csv", "header");
@@ -11,7 +8,6 @@ void loadData(){
 }
 
 void parseData(){
-  
   //First parse county polygon
     ArrayList<PVector> coords = new ArrayList<PVector>();
     for(int i = 0; i<CountyBoundary.getRowCount(); i++){
@@ -23,7 +19,6 @@ void parseData(){
    county.outline = true;
    county.makeShape();  
 
-   
 //Now we can parse the population polygons
   int previd = 0;
   coords = new ArrayList<PVector>();

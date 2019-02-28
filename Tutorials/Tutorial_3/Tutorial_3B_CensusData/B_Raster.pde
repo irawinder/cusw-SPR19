@@ -1,12 +1,10 @@
 class Raster{
   //Simple class for a square raster
-  float cellSize;
+  float cellSize, w, h;
   int numX, numY;
   PVector start;
-  float w, h;
-    PVector[][] centers;
-    float[][] scores;
-  
+  PVector[][] centers;
+  float[][] scores;
   
   Raster(float _size, float _w, float _h){
     w = _w;
