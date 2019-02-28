@@ -1,0 +1,7 @@
+What case study area did you pick and why?
+
+What metrics did you pick and why?
+
+What statistical test did you use and why?
+
+What was it's result (again not graded for accuracy)?
