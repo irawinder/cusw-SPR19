@@ -32,7 +32,7 @@ void setup() {
 
 void draw() {
   
-  // Set all body's accelerations to 0
+  // Set all bodys' accelerations to 0
   planetA.resetAcceleration();
   planetB.resetAcceleration();
   star.resetAcceleration();
@@ -56,6 +56,7 @@ void draw() {
   planetB.update();
   star.update();
   
+  // Draw UI
   fill(50);
   text("Press any key to draw acceleration vector", 25, 25);
 }

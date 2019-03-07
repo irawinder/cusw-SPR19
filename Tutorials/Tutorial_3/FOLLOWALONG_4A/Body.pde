@@ -37,17 +37,16 @@ class Body {
     // acceleration = pixels per second per second
     // force = G*m2/d^2
     // force = mass * acceleration
-    float G = 0.3;
-    float distance = max(50, location.dist(a.location)); // minimum of 50 px prevents slingshots
-    float magnitude = G*a.mass/sq(distance); // Newton's Law of Gravitation
+    //
+    //float G = 
+    //float distance = 
+    //float magnitude = 
     
     // 2. Vectorize gravity:
-    PVector gravity = new PVector(a.location.x - location.x, a.location.y - location.y); 
-    gravity.normalize();
-    gravity.setMag(magnitude);
+    //PVector gravity =
     
-    // 3. Apply gravity of body a to acceleration
-    acceleration.add(gravity);
+    // 3. Apply gravity of body a to acceleration:
+    
   }
   
   // this function is designed to run every 'timestep'
@@ -58,10 +57,9 @@ class Body {
     // Reference: https://en.wikipedia.org/wiki/Euler_method
     
     // v = pixels per second
-    velocity.add(acceleration);
     
     // l = pixels
-    location.add(velocity);
+    
   }
   
   void draw(boolean showForce) {
