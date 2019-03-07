@@ -97,10 +97,10 @@ void poiPaths(int numPaths) {
     while(notFound) {
       //  An example Origin and Desination between which we want to know the shortest path
       //
-      // Origin is a random road node
-      int randomIndex = int(random(network.nodes.size()));
-      Node n = network.nodes.get(randomIndex);
-      PVector orig = new PVector(n.loc.x, n.loc.y); // Origin is Random Location
+      // Origin is Random POI
+      int orig_index = int(random(pois.size()));
+      PVector orig = pois.get(orig_index).coord;
+      orig = map.getScreenLocation(orig);
       
       // Destination is Random POI
       int dest_index = int(random(pois.size()));

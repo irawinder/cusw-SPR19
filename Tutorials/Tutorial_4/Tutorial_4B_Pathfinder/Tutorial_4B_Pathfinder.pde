@@ -46,11 +46,27 @@ ArrayList<POI> pois;
 ArrayList<Way> ways; 
 ArrayList<Polygon> polygons;
 
+// A function to contain model initialization
+void initModel() {
+  
+  /* Step 1: Initialize Network Using ONLY ONE of these methods */
+  //randomNetwork(0.5); // a number between 0.0 and 1.0 specifies how 'porous' the network is
+  waysNetwork(ways);
+  //randomNetworkMinusBuildings(0.1, polygons); // a number between 0.0 and 1.0 specifies how 'porous' the network is
+  
+  /* Step 2: Initialize Paths Using ONLY ONE of these methods */
+  //randomPaths(1);
+  poiPaths(1);
+  
+  /* Step 3: Initialize Population */
+  initPopulation(30*paths.size());
+}
+
 void setup() {
   size(900, 650);
   
-  /* Intiailize your data structures early in setup */
-  map = new MercatorMap(width, height, 42.36244, 42.35537, -71.10105, -71.08809, 0);
+  /* Intialize your data structures early in setup */
+  map = new MercatorMap(width, height, 42.36244, 42.35537, -71.10105, -71.08809, 0); // Coordinates pulled from OSM Export
   polygons = new ArrayList<Polygon>();
   ways = new ArrayList<Way>();
   pois = new ArrayList<POI>();
@@ -59,18 +75,8 @@ void setup() {
   loadData();
   parseData();
   
-  /* Step 1: Initialize Network Using ONLY ONE of these methods */
-  //randomNetwork(0.5); // a number between 0.0 and 1.0 specifies how 'porous' the network is
-  waysNetwork(ways);
-  //randomNetworkMinusBuildings(0.1, polygons); // a number between 0.0 and 1.0 specifies how 'porous' the network is
-  
-  /* Step 2: Initialize Paths Using ONLY ONE of these methods */
-  //randomPaths(50);
-  poiPaths(50);
-  
-  /* Step 3: Initialize Paths Using ONLY ONE of these methods */
-  //initPopulation(600);
-  initPopulation(300);
+  /* Initialize our model and simulation */
+  initModel();
   
 }
 
@@ -79,7 +85,7 @@ void draw() {
   
   /* background image from OSM */
   //image(background, 0, 0);
-  drawGISObjects();
+  //drawGISObjects();
   
   /*  Displays the Graph in grayscale */
   tint(255, 75); // overlaid as an image
@@ -96,7 +102,7 @@ void draw() {
    *  FORMAT: display(color, alpha)
    */
   for (Path p: paths) {
-    p.display(100, 155);
+    p.display(100, 100);
   }
   
   /*  Update and Display the population of agents
@@ -105,15 +111,15 @@ void draw() {
   boolean collisionDetection = true;
   for (Agent p: people) {
     p.update(personLocations(people), collisionDetection);
-    p.display(#FFFF00, 255);
+    p.display(#FFFFFF, 255);
   }
+  
+  //UI:
+  fill(255);
+  text("Press any key to regenerate model", 25, 25);
   
 }
 
 void keyPressed() {
-  
-  randomPaths(50);
-  poiPaths(50);
-  initPopulation(300);
-  
+  initModel();
 }
