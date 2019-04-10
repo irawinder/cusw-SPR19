@@ -65,9 +65,9 @@ class Heatmap{
       for(int j = 0; j<cellY; j++){
         color col = color(0, 0, 0);
         float val = scores[i][j];
-        if(val < 50) col = lerpColor(worst, mid, val/100);
+        if(val < 50) col = lerpColor(worst, mid, val/50);
         if(val == 50) col = mid;
-        if(val > 50) col = lerpColor(mid, best, val/100);
+        if(val > 50) col = lerpColor(mid, best, val/50);
         p.fill(col);
         p.noStroke();
         p.rect(i*cellW, j*cellH, cellW, cellH);
